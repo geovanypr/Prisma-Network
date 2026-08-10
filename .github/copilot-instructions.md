@@ -1,0 +1,5 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Scaffold the React + TypeScript project in the current workspace.
+- [x] Create the minimal Vite + React + TypeScript configuration.
+- [x] Add README.md with project scripts.
+- [x] Ensure the project is ready for install and dev start.
