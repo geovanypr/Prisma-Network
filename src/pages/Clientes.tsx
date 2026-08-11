@@ -25,13 +25,13 @@ export const Clientes: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-surface border border-border p-6 shadow-sm grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+      <div className="rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-6 shadow-sm grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
         <div>
           <h1 className="text-3xl font-bold text-text-primary">Clientes</h1>
           <p className="text-text-secondary mt-1">Clientes registrados y su estado para el seguimiento comercial.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <div className="rounded-3xl bg-primary/10 px-4 py-3 text-sm text-primary">{clients.length} clientes</div>
+          <div className="rounded-3xl bg-primary px-4 py-3 text-sm font-semibold text-white">{clients.length} clientes</div>
           <Button variant="primary">+ Nuevo Cliente</Button>
         </div>
       </div>

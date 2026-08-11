@@ -2,6 +2,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  password: string;
   role: string;
   status: 'activo' | 'pendiente';
   avatar: string;
@@ -35,18 +36,18 @@ export type SalesPoint = {
 };
 
 export const admins: User[] = [
-  { id: '1', name: 'Geovany Pérez', email: 'geovany@prisma.com', role: 'Administrador', status: 'activo', avatar: 'G' },
-  { id: '2', name: 'María González', email: 'maria@prisma.com', role: 'Administrador', status: 'activo', avatar: 'M' },
-  { id: '3', name: 'Carlos Rodríguez', email: 'carlos@prisma.com', role: 'Administrador', status: 'activo', avatar: 'C' },
-  { id: '4', name: 'Ana Martínez', email: 'ana@prisma.com', role: 'Administrador', status: 'pendiente', avatar: 'A' },
-  { id: '5', name: 'Roberto Sánchez', email: 'roberto@prisma.com', role: 'Administrador', status: 'activo', avatar: 'R' },
+  { id: '1', name: 'Geovany', email: 'geovany@prisma.com', password: '123', role: 'Administrador', status: 'activo', avatar: 'G' },
+  { id: '2', name: 'Juanluis', email: 'juanluis@prisma.com', password: '123', role: 'Administrador', status: 'activo', avatar: 'J' },
+  { id: '3', name: 'OliverR', email: 'oliverr@prisma.com', password: '123', role: 'Administrador', status: 'activo', avatar: 'O' },
+  { id: '4', name: 'OliverF', email: 'oliverf@prisma.com', password: '123', role: 'Administrador', status: 'activo', avatar: 'O' },
+  { id: '5', name: 'Yatsee', email: 'yatsee@prisma.com', password: '123', role: 'Administrador', status: 'activo', avatar: 'Y' },
 ];
 
 export const clients: Client[] = [
   { id: 'CL-001', name: 'María González', phone: '809-555-0101', status: 'activo' },
   { id: 'CL-002', name: 'Carlos Ramírez', phone: '829-555-0144', status: 'activo' },
   { id: 'CL-003', name: 'Ana Torres', phone: '849-555-0123', status: 'pendiente' },
-  { id: 'CL-004', name: 'Juan Pérez', phone: '809-555-0199', status: 'activo' },
+  { id: 'CL-004', name: 'Geovany', phone: '809-555-0199', status: 'activo' },
   { id: 'CL-005', name: 'Yolanda Méndez', phone: '829-555-0188', status: 'pendiente' },
 ];
 

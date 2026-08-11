@@ -26,41 +26,36 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-primary text-white p-6 shadow-[0_25px_80px_rgba(31,78,121,0.25)]">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-primary-light/80">Inicio</p>
-            <h1 className="text-4xl font-bold mt-2">Bienvenido, {user?.name}</h1>
-            <p className="mt-2 text-base text-primary-light/90">Sistema de Gestión Comercial e Inventario</p>
+      <div className="welcome-banner mb-8">
+        <p className="welcome-label mb-2">Inicio</p>
+        <h1 className="welcome-title text-3xl mb-2">Bienvenido, {user?.name || 'Geovany'}</h1>
+        <p className="welcome-subtitle mb-8">Sistema de Gestión Comercial e Inventario</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="welcome-stat-box">
+            <p className="welcome-stat-label">Ventas del mes</p>
+            <p className="welcome-stat-value">RD$ {totalSales.toLocaleString('es-DO')}</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-3xl bg-white/10 border border-white/20 p-4">
-              <p className="text-sm text-primary/80">Ventas del mes</p>
-              <p className="mt-2 text-2xl font-semibold">RD$ {totalSales.toLocaleString('es-DO')}</p>
-            </div>
-            <div className="rounded-3xl bg-white/10 border border-white/20 p-4">
-              <p className="text-sm text-primary/80">Proyectos activos</p>
-              <p className="mt-2 text-2xl font-semibold">{totalProjects}</p>
-            </div>
+          <div className="welcome-stat-box">
+            <p className="welcome-stat-label">Proyectos activos</p>
+            <p className="welcome-stat-value">{totalProjects}</p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {kpis.map((kpi) => {
           const Icon = kpi.icon;
           return (
-            <Card key={kpi.name} className="hover:shadow-xl transition-shadow duration-200 border-transparent bg-surface">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-text-secondary text-sm">{kpi.name}</p>
-                  <p className="text-2xl font-semibold text-text-primary mt-3">{kpi.value}</p>
-                </div>
-                <div className={`flex h-14 w-14 items-center justify-center rounded-3xl ${kpi.color} text-white shadow-xl`}>
-                  <Icon size={24} />
-                </div>
+            <div key={kpi.name} className="stat-card p-6 flex justify-between items-center">
+              <div>
+                <p className="stat-card-label mb-1">{kpi.name}</p>
+                <h3 className="text-2xl font-bold" style={{ color: 'var(--text-dark)' }}>{kpi.value}</h3>
               </div>
-            </Card>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-full ${kpi.color} text-white`}>
+                <Icon size={22} />
+              </div>
+            </div>
           );
         })}
       </div>

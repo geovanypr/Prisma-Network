@@ -12,18 +12,13 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('prisma_user');
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    if (user) {
-      localStorage.setItem('prisma_user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('prisma_user');
-    }
-  }, [user]);
+    return () => {
+      setUser(null);
+    };
+  }, []);
 
   const login = (email: string, password: string): boolean => {
     // Mock authentication - accepts any password for demo purposes

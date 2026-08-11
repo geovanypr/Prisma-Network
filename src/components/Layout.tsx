@@ -26,10 +26,10 @@ export const Layout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen dashboard-container">
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-full bg-primary text-white transition-all duration-300 z-30 shadow-[0_0_30px_rgba(0,0,0,0.2)] ${
+        className={`sidebar fixed left-0 top-0 h-full transition-all duration-300 z-30 shadow-[0_0_30px_rgba(0,0,0,0.2)] ${
           sidebarOpen ? 'w-64' : 'w-20'
         }`}
       >
@@ -37,15 +37,20 @@ export const Layout: React.FC = () => {
           <div className="flex items-center justify-between gap-3">
             {sidebarOpen ? (
               <div>
-                <h1 className="text-xl font-bold tracking-wide">PRISMA NETWORK</h1>
-                <p className="text-xs text-white/70 mt-1">Sistema de Gestión Comercial e Inventario</p>
+                <h1 className="sidebar-title text-xl tracking-wide">PRISMA NETWORK</h1>
+                <p className="text-xs sidebar-item-inactive mt-1">Sistema de Gestión Comercial</p>
               </div>
             ) : (
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold">P</div>
+              <div 
+                className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold"
+                style={{ backgroundColor: 'var(--prisma-primary)' }}
+              >
+                P
+              </div>
             )}
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 hover:bg-primary-light/15 rounded-lg transition-colors"
+              className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
             >
               {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -62,8 +67,8 @@ export const Layout: React.FC = () => {
                 to={item.path}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
                   isActive
-                    ? 'bg-primary-light text-white'
-                    : 'text-white/70 hover:bg-primary-light/15 hover:text-white'
+                    ? 'sidebar-item-active'
+                    : 'sidebar-item-inactive hover:bg-white/10'
                 }`}
               >
                 <Icon size={20} />
@@ -81,32 +86,35 @@ export const Layout: React.FC = () => {
         }`}
       >
         {/* Navbar */}
-        <header className="bg-surface/95 backdrop-blur-xl border-b border-border sticky top-0 z-20 shadow-sm">
+        <header className="bg-white/95 backdrop-blur-xl border-b border-slate-200 sticky top-0 z-20 shadow-sm">
           <div className="flex flex-col gap-3 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex-1 max-w-2xl">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-secondary" size={20} />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
                 <input
                   type="text"
                   placeholder="Buscar productos, categorías, marcas..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-border rounded-xl bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-800"
                 />
               </div>
             </div>
 
             <div className="flex items-center gap-3 justify-end">
               <div className="hidden md:flex flex-col text-right">
-                <p className="font-medium text-text-primary">{user?.name}</p>
-                <p className="text-sm text-text-secondary">{user?.role}</p>
+                <p className="font-medium text-slate-800">{user?.name}</p>
+                <p className="text-sm text-slate-500">{user?.role}</p>
               </div>
-              <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center text-white font-semibold shadow-sm">
-                {user?.avatar}
+              <div 
+                className="w-11 h-11 rounded-full flex items-center justify-center text-white font-semibold shadow-sm"
+                style={{ backgroundColor: 'var(--prisma-primary)' }}
+              >
+                {user?.avatar || 'U'}
               </div>
               <button
                 onClick={handleLogout}
-                className="p-2 rounded-lg text-text-secondary hover:text-danger hover:bg-background transition"
+                className="p-2 rounded-lg text-slate-500 hover:text-red-500 hover:bg-slate-100 transition"
                 title="Cerrar sesión"
               >
                 <LogOut size={20} />
